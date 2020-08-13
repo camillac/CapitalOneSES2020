@@ -16,6 +16,9 @@ api_key = 'dceced5acb16100198959ed0cfa3d62b'
 def main():
     return render_template('welcome.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 if __name__ == '__main__':
     app.debug = True
