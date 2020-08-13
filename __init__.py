@@ -13,10 +13,10 @@ db = SQLAlchemy(app)
 api_key = 'dceced5acb16100198959ed0cfa3d62b'
 
 labels = [
-    'Take Out',
-    'Groceries',
-    'Entertainment',
-    'Misc'
+    'Take Out', '(expected)',
+    'Groceries', '(expected)',
+    'Entertainment', '(expected)',
+    'Misc', '(expected)'
 ]
 
 values = [
