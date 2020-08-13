@@ -5,7 +5,6 @@
         <title>{% block title %}{% endblock %}</title>
     </head>
         <nav class="navbar" style="background-color:#96ccdf">
-
             <a class="navbar-brand" style="margin-top:5px;right:5px" href="/">Home</a>
             <a class="navbar-brand" style="margin-top:5px" href="login">Login</a>
             <!-- <a class="navbar-brand" style="margin-top:5px" href="logout">Logout</a> -->
@@ -14,11 +13,12 @@
         </nav>
     <body>
         {% block top %}
-    {% endblock %}
-    {% block content %}
-    {% endblock %}
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+
     </body>
-    <!-- <footer>
-        WEBSITE
-    </footer> -->
+        <!-- <footer>
+            WEBSITE
+        </footer> -->
 </html>
