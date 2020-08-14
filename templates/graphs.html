@@ -23,53 +23,53 @@
       canvas{
         display:inline;
         /* float:left; */
-        margin-left: 15px; 
+        margin-left: 15px;
         padding:15px;
-        right: 0px; 
+        right: 0px;
       }
       form{
         display:block;
         /* border: 10px solid green;  */
         float:right;
-        background-color: rgba(67, 219, 7, .2);
+        background-color: rgb(93,207,141);
         margin-top: 20px;
-        padding:15px; 
+        padding:15px;
         margin-right: 70px;
         width:30%;
         text-align: justify;
-        height: 450px; 
+        height: 450px;
       }
       .card-text{
-        font-size: 30px;
+        font-size: 29px;
         font-weight: 500;
       }
       label{
         font-size:30px;
-        font-weight: 400; 
+        font-weight: 400;
       }
       li{
         text-align:center;
         font-weight: 400;
-        font-size: 15px; 
+        font-size: 15px;
       }
       h3{
         text-align: center;
       }
-      body { 
+      body {
         background-color: rgba(53, 197, 241,.01);
-        font-family: 'Roboto', sans-serif !important;        
+        font-family: 'Roboto', sans-serif !important;
         /* font-size: 16px;     */
         }
       }
     </style>
     <body>
       <center>
-        <h1>{{ title }}</h1>
+        <h1 style="font-size: 50px; font-weight: 8000">MONTHLY EXPENSES</h1>
       </center>
       <form class = 'card-columns' action="/update_spending" method="POST">
           <div class="card-body text-center">
            <b> <p class="card-text">Update Your Purchases Here!</p> </b>
-           <p>Select which category(s) you would like to add purchases to and 
+           <p>Select which category(s) you would like to add purchases to and
              add the dollar amount to see how your purchases compare to your goals!
            </p>
           </div>
@@ -123,26 +123,28 @@
                         {% endfor %}
                         ],
                       backgroundColor: [
-                          'rgba(0, 0, 255, 0.2)',
-                          'rgba(0, 255, 0, 0.2)',
-                          'rgba(0, 0, 255, 0.2)',
-                          'rgba(0, 255, 0, 0.2)',
-                          'rgba(0, 0, 255, 0.2)',
-                          'rgba(0, 255, 0, 0.2)',
-                          'rgba(0, 0, 255, 0.2)',
-                          'rgba(0, 255, 0, 0.2)',
+                          'rgba(75, 123, 49, 0.9)',
+                          'rgba(93, 207, 141, 0.9)',
+                          'rgba(75, 123, 49, 0.9)',
+                          'rgba(93, 207, 141, 0.9)',
+                          'rgba(75, 123, 49, 0.9)',
+                          'rgba(93, 207, 141, 0.9)',
+                          'rgba(75, 123, 49, 0.9)',
+                          'rgba(93, 207, 141, 0.9)',
+                          'rgba(75, 123, 49, 0.9)'
 
 
                       ],
                       borderColor: [
-                          'rgba(0, 0, 255, 0.1)',
-                          'rgba(0, 255, 0, 1)',
-                          'rgba(0, 0, 255, 0.1)',
-                          'rgba(0, 255, 0, 1)',
-                          'rgba(0, 0, 255, 0.1)',
-                          'rgba(0, 255, 0, 1)',
-                          'rgba(0, 0, 255, 0.1)',
-                          'rgba(0, 255, 0, 1)',
+                          'rgba(75, 123, 49, 1)',
+                          'rgba(93, 207, 141, 1)',
+                          'rgba(75, 123, 49, 1)',
+                          'rgba(93, 207, 141, 1)',
+                          'rgba(75, 123, 49, 1)',
+                          'rgba(93, 207, 141, 1)',
+                          'rgba(75, 123, 49, 1)',
+                          'rgba(93, 207, 141, 1)'
+
                       ],
                       borderWidth: 1
                   }]
@@ -162,14 +164,17 @@
               },
           });
           </script>
-      
+
 <br>
 <!-- <center> -->
-  <div class="card bg-success text-white">
+<footer class="footer bg-dark">
+    <div class="container">
+
+  <div class="card bg-success text-white" style="background-color:rgb(75,123,49); color:rgb(222,222,222);">
     <div class="card-body">
       <br>
       <center>
-      <h2>
+      <h2 style="color:black;">
       Tips to Decrease Your Spending!
       </h2>
       <ul style="list-style-type:none"><li>Sleep on it!</li>
@@ -185,9 +190,11 @@
       </center>
       </div>
     </div>
+  </div>
+</footer>
     <!-- <br> -->
     <!-- </center> -->
 
     </body>
-        
+
 </html>
