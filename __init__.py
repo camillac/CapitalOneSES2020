@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request, flash
 import requests
 import json
 
@@ -58,6 +58,7 @@ def set_goals():
     goal_misc= (int(budg * (misc/100)))
     bar_labels=labels
     maxy = max(values)
+    # maxy = budg
     return render_template('graphs.html',title='Monthly Expenses', max=maxy, labels=bar_labels, values=values, budg = budg, dining = SPENT, groceries = SPENT,ent = SPENT, misc = SPENT,goal_dining = goal_dining, goal_groc = goal_groc, goal_ent = goal_ent, goal_misc = goal_misc )
 @app.route('/update_spending', methods=["POST"])
 def update_spending():
@@ -76,11 +77,11 @@ def update_spending():
     m_goal = int(req.get("goal_misc"))
     if(req.get("takeout")== "takeout"):
         d = d + int(req.get("amount"))
-    elif(req.get("groceries")== "groceries"):
+    if(req.get("groceries")== "groceries"):
         g = g + int(req.get("amount"))
-    elif(req.get("ent")== "ent"):
+    if(req.get("ent")== "ent"):
         e = e + int(req.get("amount"))
-    elif(req.get("misc")== "misc"):
+    if(req.get("misc")== "misc"):
         m = m + int(req.get("amount"))
     values = []
     values.append(d)
@@ -95,6 +96,14 @@ def update_spending():
         print(i)
     maxy = max(values)
     bar_labels=labels
+    if(d> d_goal):
+        flash('You exceeded your dining out goal! No more take out!')
+    if(g> g_goal):
+        flash("You exceeded your groceries goal! Somebody's been mighty hungry!")
+    if(e> e_goal):
+        flash('You exceeded your entertainmnet goal! Stop watching TV and do some work!')
+    if(m> m_goal):
+        flash('You exceeded your misc goal! What are you spending your money on?')
     return render_template('graphs.html',title='Monthly Expenses', max=maxy, labels=bar_labels, values=values, budg = budg, dining = d, groceries = g,ent = e, misc = m,goal_dining = d_goal, goal_groc = g_goal, goal_ent = e_goal, goal_misc = m_goal )
 if __name__ == '__main__':
     app.debug = True

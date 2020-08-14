@@ -9,22 +9,87 @@
         <meta charset="utf-8" />
         <title>BudgetBuddy: Monthly Expense</title>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
-
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul style="list-style-type:none" class=flashes>
+          {% for message in messages %}
+          <center><li style="background-color: rgba(255, 77, 77, .2); width:40%; text-align:center; margin-bottom:.5px;">{{ message }}</li> </center>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
     </head>
-
+    <style>
+      canvas{
+        display:inline;
+        /* float:left; */
+        margin-left: 15px; 
+        padding:15px;
+        right: 0px; 
+      }
+      form{
+        display:block;
+        /* border: 10px solid green;  */
+        float:right;
+        background-color: rgba(67, 219, 7, .2);
+        margin-top: 20px;
+        padding:15px; 
+        margin-right: 70px;
+        width:30%;
+        text-align: justify;
+        height: 450px; 
+      }
+      .card-text{
+        font-size: 30px;
+        font-weight: 500;
+      }
+      label{
+        font-size:30px;
+        font-weight: 400; 
+      }
+      li{
+        text-align:center;
+        font-weight: 400;
+        font-size: 15px; 
+      }
+      h3{
+        text-align: center;
+      }
+      body { 
+        background-color: rgba(53, 197, 241,.01);
+        font-family: 'Roboto', sans-serif !important;        
+        /* font-size: 16px;     */
+        }
+      }
+    </style>
     <body>
       <center>
         <h1>{{ title }}</h1>
       </center>
-      <form action="/update_spending" method="POST">
-        <input type="radio" id="takeout" name="takeout" value="takeout">
-        <label for="takeout">Takeout</label><br>
+      <form class = 'card-columns' action="/update_spending" method="POST">
+          <div class="card-body text-center">
+           <b> <p class="card-text">Update Your Purchases Here!</p> </b>
+           <p>Select which category(s) you would like to add purchases to and 
+             add the dollar amount to see how your purchases compare to your goals!
+           </p>
+          </div>
+          <center>
+        <div class="form-check">
+          <input type="radio" id="takeout" name="takeout" value="takeout">
+          <label for="takeout">Takeout</label><br>
+        </div>
+        <div class="form-check">
         <input type="radio" id="groceries" name="groceries" value="groceries">
         <label for="groceries">Groceries</label><br>
+      </div>
+        <div class="form-check">
         <input type="radio" id="ent" name="ent" value="ent">
         <label for="ent">Entertainment</label> <br>
+        </div>
+        <div class="form-check">
         <input type="radio" id="misc" name="misc" value="misc">
         <label for="misc">Misc</label><br>
+        </div>
         <input type="number" name = "amount" required>
           <br>
         <input type="hidden" name= "old_dining" value="{{dining}}">
@@ -36,65 +101,11 @@
         <input type="hidden" name= "goal_groceries" value="{{goal_groc}}">
         <input type="hidden" name= "goal_ent" value="{{goal_ent}}">
         <input type="hidden" name= "goal_misc" value="{{goal_misc}}">
+        <br>
           <input class=submit type="submit" value="Submit">
+          </center>
 </form>
-      <!-- <center> -->
-        <!-- <canvas id="chart" width="900" height="575"></canvas>
-        <script>
-          // bar chart data
-          var barData = {
-            labels : [
-              {% for item in labels %}
-               "{{ item }}",
-              {% endfor %}
-      ],
-
-            datasets : [{
-              backgroundColor: ["rgba(14,72,100,1)",
-              "rgba(255,72,100,1)",
-              "rgba(14,72,100,1)",
-              "rgba(255,72,100,1)",
-              "rgba(14,72,100,1)",
-              "rgba(255,72,100,1)",
-              "rgba(14,72,100,1)",
-              "rgba(255,72,100,1)"],
-              borderColor: 'rgb(255, 99, 132)',
-
-              // fillColor: "rgba(151,187,205,0.2)",
-              // strokeColor: "rgba(151,187,205,1)",
-              // pointColor: "rgba(151,187,205,1)",
-              data : [
-                {% for item in values %}
-                   "{{ item }}",
-                  {% endfor %}
-                ]
-                }
-            ]
-          }
-
-         // get bar chart canvas
-         var mychart = document.getElementById("chart").getContext("2d");
-
-           steps = 10
-           max = {{max}}
-
-         // draw bar chart
-         new Chart(mychart).Bar(barData, {
-           scaleOverride: true,
-           scaleSteps: steps,
-           scaleStepWidth: Math.ceil(max / steps),
-           scaleStartValue: 0,
-           scaleShowVerticalLines: true,
-           scaleShowGridLines : true,
-           barShowStroke : true,
-           scaleShowLabels: true
-           }
-         );
-
-        </script> -->
-        <!-- <center> -->
         <canvas id="myChart" width="800" height="575" style="padding:15px;margin:0px;"></canvas>
-        <!-- </center>  -->
         <script>
           var ctx = document.getElementById('myChart').getContext('2d');
           var myChart = new Chart(ctx, {
@@ -106,7 +117,6 @@
                     {% endfor %}
             ],
                   datasets: [{
-                      // label: '# of Votes',
                       data: [
                       {% for item in values %}
                          "{{ item }}",
@@ -152,48 +162,30 @@
               },
           });
           </script>
-      <style>
-        canvas{
-          display:inline;
-          /* float:left; */
-          margin-left: 15px; 
-          padding:15px;
-          right: 0px; 
-        }
-        form{
-          display:block;
-          float:right;
-          /* top: 0px; */
-          padding:15px; 
-          margin-right: 70px;
-        }
-        quest{
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        label{
-          font-size:25px; 
-        }
-        }
-      </style>
       
 <br>
 <!-- <center> -->
-<div id= "quest">
-      <h1>
+  <div class="card bg-success text-white">
+    <div class="card-body">
+      <br>
+      <center>
+      <h2>
       Tips to Decrease Your Spending!
-      </h1>
-      <ul><li>Sleep on it!</li>
+      </h2>
+      <ul style="list-style-type:none"><li>Sleep on it!</li>
       <li>If you still want to make the purchase the next day, you can ensure you really want it.</li>
       <li>Ask yourself, ‘Do I need this?”</li>
       <li>Ask yourself how many hours of work it will take to pay this item off?</li>
       <li>Think of your credit card as a debit card</li>
       <li>Take up less expensive hobbies to reduce spending, like cooking</li>
       <li>Think of your saving goals whenever you feel tempted</li>
-      <li>Remember that you can do this</li>
+      <li>Remember that you can do this!</li>
       </ul>
+      <br>
+      </center>
+      </div>
     </div>
+    <!-- <br> -->
     <!-- </center> -->
 
     </body>
