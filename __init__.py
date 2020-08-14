@@ -11,34 +11,42 @@ app.secret_key = 'coses'
 api_key = 'dceced5acb16100198959ed0cfa3d62b'
 
 labels = [
-    'Take Out', 'Take Out (expected)',
-    'Groceries', 'Groceries (expected)',
-    'Entertainment', 'Entertainment (expected)',
-    'Misc', 'Misc (expected)'
+    'Take Out', 'Take Out Goal',
+    'Groceries', 'Groceries Goal',
+    'Entertainment', 'Entertainment Goal',
+    'Misc', 'Misc Goal'
+]
+GOAL = 1500
+values = [
+    967.67, GOAL, 1190.89, GOAL, 1079.75, GOAL, 1349.19, GOAL
 ]
 
-values = [
-    967.67, 1190.89, 1079.75, 1349.19,967.67, 1190.89, 1079.75, 1349.19
+colors = [
+    "#F7464A", "#FF0000", "#46BFBD", "#FF0000", "#FDB45C", "#FF0000", 
+    "#FEDCBA", "#FF0000"
 ]
 
 @app.route('/graphs')
 def bar():
     bar_labels=labels
     bar_values=values
-    return render_template('graphs.html', title='Monthly Expenses', max=17000, labels=bar_labels, values=bar_values)
+    return render_template('graphs.html', title='Monthly Expenses', max=GOAL, labels=bar_labels, values=bar_values)
 
 @app.route('/')
 def main():
     return render_template('welcome.html')
-
-# @app.route('/login')
-# def login():
-#     return render_template('login.html')
-
+@app.route('/get_goal')
+def get_goal():
+    return render_template('goals2.html')
 @app.route('/goals')
 def goals():
-    return render_template('goals.html')
+    return render_template('goals2.html')
+
+@app.route('/set_goals')
+def set_goals():
+    return render_template('welcome.html')
 
 if __name__ == '__main__':
     app.debug = True
     app.run()
+

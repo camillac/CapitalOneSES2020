@@ -2,32 +2,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Budget Buddy: Goals</title>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    {% block title%}Budget Buddy: Goals {% endblock %}
 </head>  
-<div class="topnav">
+{% block content %}
+<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+<!-- <div class="topnav">
     <a href="#welcome">Welcome</a>
     <a class="active" href="#goals">Goals</a>
     <a href="#budget">Your Current Spending</a>
-  </div> 
-<body>
+  </div>  -->
+<!-- <body> -->
+  <center>
  <h2><br> These are the categories that are most variable throughout groups, and can be used to cut down on expenses:</h2>
- <form>
+ <form action="/set_goals">
+            <br><b> Budget</b>
+            <br><small><i> What is your monthly budget in dollars?</i> </small>
+            <br><input type = "text" id = "t1">
             <br><b> Dining Out </b> 
-            <br><small><i> How much money do you want to spend at Restaurants and Cafes?</i> </small>
-            <br><input type = " " name="" id = "t1">
+            <br><small><i> What percentage of your money do you want to spend at Restaurants and Cafes?</i> </small>
+            <br><input type = "text" id = "t1">
             <br><b> Groceries</b>
-            <br><small><i> How much money do you want to spend shopping for groceries?</i> </small>
-            <br><input type = " " name="" id = "t2">
+            <br><small><i> What percentage of your money do you want to spend shopping for groceries?</i> </small>
+            <br><input type = "text" id = "t2">
             <br><b> Entertainment</b>
-            <br><small><i> How much money do you want to spend on things like subscription services and other activities used for entertainment, such as going to the movies?</i> </small>
-            <br><input type = " " name="" id = "t3">
+            <br><small><i> What percentage of your money do you want to spend on things like subscription services and other activities used for entertainment, such as going to the movies?</i> </small>
+            <br><input type = "text" id = "t3">
             <br><b> Personal/Misc</b>
-            <br><small><i> How much money do you want to spend on buying other things, such as clothing and supplies?</i> </small>
-            <br><input type = " " name="" id = "t4">
+            <br><small><i> What percentage of your money do you want to spend on buying other things, such as clothing and supplies?</i> </small>
+            <br><input type = "text" id = "t4">
             <br>
-            <br><input class=submit type="submit" value="Submit">
+            <br>
+            <input class=submit type="submit" value="Submit">
 </form>
-</script>
+</center>
+<!-- </script> -->
+{%endblock%}
 </body>
 </html>
+
