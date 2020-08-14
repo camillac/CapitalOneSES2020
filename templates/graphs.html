@@ -10,7 +10,7 @@ Monthly Expense
 <head>
   <meta charset="utf-8" />
   <title>{{ title }}</title>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
 </head>
 
 <body>
@@ -18,7 +18,7 @@ Monthly Expense
     <h1>{{ title }}</h1>
   </center>
   <center>
-    <canvas id="chart" width="900" height="575"></canvas>
+    <!-- <canvas id="chart" width="900" height="575"></canvas>
     <script>
       // bar chart data
       var barData = {
@@ -29,15 +29,25 @@ Monthly Expense
 	],
 
         datasets : [{
-          fillColor: "rgba(151,187,205,0.2)",
-          strokeColor: "rgba(151,187,205,1)",
-          pointColor: "rgba(151,187,205,1)",
+          backgroundColor: ["rgba(14,72,100,1)",
+          "rgba(255,72,100,1)",
+          "rgba(14,72,100,1)",
+          "rgba(255,72,100,1)",
+          "rgba(14,72,100,1)",
+          "rgba(255,72,100,1)",
+          "rgba(14,72,100,1)",
+          "rgba(255,72,100,1)"],
+          borderColor: 'rgb(255, 99, 132)',
+
+          // fillColor: "rgba(151,187,205,0.2)",
+          // strokeColor: "rgba(151,187,205,1)",
+          // pointColor: "rgba(151,187,205,1)",
           data : [
             {% for item in values %}
                "{{ item }}",
               {% endfor %}
-	    ]
-          }
+            ]
+            }
         ]
       }
 
@@ -60,7 +70,55 @@ Monthly Expense
        }
      );
 
-    </script>
+    </script> -->
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: [
+                {% for item in labels %}
+                 "{{ item }}",
+                {% endfor %}
+      	],
+              datasets: [{
+                  label: '# of Votes',
+                  data: [
+                  {% for item in values %}
+                     "{{ item }}",
+                    {% endfor %}
+                    ],
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
+      });
+      </script>
   </center>
 </body>
 </html>
