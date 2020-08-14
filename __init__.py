@@ -37,7 +37,9 @@ def bar():
 @app.route('/')
 def main():
     return render_template('welcome.html')
-
+@app.route('/get_goal')
+def get_goal():
+    return render_template('goals.html')
 @app.route('/goals')
 def goals():
     return render_template('goals.html')
