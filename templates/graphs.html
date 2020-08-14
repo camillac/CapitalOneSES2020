@@ -16,7 +16,29 @@
       <center>
         <h1>{{ title }}</h1>
       </center>
-      <center>
+      <form action="/update_spending" method="POST">
+        <input type="radio" id="takeout" name="takeout" value="takeout">
+        <label for="takeout">Takeout</label><br>
+        <input type="radio" id="groceries" name="groceries" value="groceries">
+        <label for="groceries">Groceries</label><br>
+        <input type="radio" id="ent" name="ent" value="ent">
+        <label for="ent">Entertainment</label> <br>
+        <input type="radio" id="misc" name="misc" value="misc">
+        <label for="misc">Misc</label><br>
+        <input type="number" name = "amount" required>
+          <br>
+        <input type="hidden" name= "old_dining" value="{{dining}}">
+        <input type="hidden" name= "old_groceries" value="{{groceries}}">
+        <input type="hidden" name= "old_ent" value="{{ent}}">
+        <input type="hidden" name= "old_misc" value="{{misc}}">
+        <input type="hidden" name= "budg" value="{{budg}}">
+        <input type="hidden" name= "goal_dining" value="{{goal_dining}}">
+        <input type="hidden" name= "goal_groceries" value="{{goal_groc}}">
+        <input type="hidden" name= "goal_ent" value="{{goal_ent}}">
+        <input type="hidden" name= "goal_misc" value="{{goal_misc}}">
+          <input class=submit type="submit" value="Submit">
+</form>
+      <!-- <center> -->
         <!-- <canvas id="chart" width="900" height="575"></canvas>
         <script>
           // bar chart data
@@ -70,8 +92,9 @@
          );
 
         </script> -->
-        <!-- <div width="800" height="00"> -->
-        <canvas id="myChart" width="900" height="575"></canvas>
+        <!-- <center> -->
+        <canvas id="myChart" width="800" height="575" style="padding:15px;margin:0px;"></canvas>
+        <!-- </center>  -->
         <script>
           var ctx = document.getElementById('myChart').getContext('2d');
           var myChart = new Chart(ctx, {
@@ -129,8 +152,35 @@
               },
           });
           </script>
-      </center>
-      <!-- </div> -->
+      <style>
+        canvas{
+          display:inline;
+          /* float:left; */
+          margin-left: 15px; 
+          padding:15px;
+          right: 0px; 
+        }
+        form{
+          display:block;
+          float:right;
+          /* top: 0px; */
+          padding:15px; 
+          margin-right: 70px;
+        }
+        quest{
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        label{
+          font-size:25px; 
+        }
+        }
+      </style>
+      
+<br>
+<!-- <center> -->
+<div id= "quest">
       <h1>
       Tips to Decrease Your Spending!
       </h1>
@@ -143,7 +193,8 @@
       <li>Think of your saving goals whenever you feel tempted</li>
       <li>Remember that you can do this</li>
       </ul>
-
+    </div>
+    <!-- </center> -->
 
     </body>
         
