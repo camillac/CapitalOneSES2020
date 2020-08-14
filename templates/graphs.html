@@ -1,150 +1,150 @@
-{% extends "base.html" %}
-
-{% block title %}
-Monthly Expense
-{% endblock %}
-
-{% block content %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>{{ title }}</title>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
-</head>
+<html>
+    <head>
+      <link rel="icon"
+            type="image/png"
+            href="../static/bellbag.png">
 
-<body>
-  <center>
-    <h1>{{ title }}</h1>
-  </center>
-  <center>
-    <!-- <canvas id="chart" width="900" height="575"></canvas>
-    <script>
-      // bar chart data
-      var barData = {
-        labels : [
-          {% for item in labels %}
-           "{{ item }}",
-          {% endfor %}
-	],
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <meta charset="utf-8" />
+        <title>BudgetBuddy: Monthly Expense</title>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
 
-        datasets : [{
-          backgroundColor: ["rgba(14,72,100,1)",
-          "rgba(255,72,100,1)",
-          "rgba(14,72,100,1)",
-          "rgba(255,72,100,1)",
-          "rgba(14,72,100,1)",
-          "rgba(255,72,100,1)",
-          "rgba(14,72,100,1)",
-          "rgba(255,72,100,1)"],
-          borderColor: 'rgb(255, 99, 132)',
+    </head>
 
-          // fillColor: "rgba(151,187,205,0.2)",
-          // strokeColor: "rgba(151,187,205,1)",
-          // pointColor: "rgba(151,187,205,1)",
-          data : [
-            {% for item in values %}
+    <body>
+      <center>
+        <h1>{{ title }}</h1>
+      </center>
+      <center>
+        <!-- <canvas id="chart" width="900" height="575"></canvas>
+        <script>
+          // bar chart data
+          var barData = {
+            labels : [
+              {% for item in labels %}
                "{{ item }}",
               {% endfor %}
+      ],
+
+            datasets : [{
+              backgroundColor: ["rgba(14,72,100,1)",
+              "rgba(255,72,100,1)",
+              "rgba(14,72,100,1)",
+              "rgba(255,72,100,1)",
+              "rgba(14,72,100,1)",
+              "rgba(255,72,100,1)",
+              "rgba(14,72,100,1)",
+              "rgba(255,72,100,1)"],
+              borderColor: 'rgb(255, 99, 132)',
+
+              // fillColor: "rgba(151,187,205,0.2)",
+              // strokeColor: "rgba(151,187,205,1)",
+              // pointColor: "rgba(151,187,205,1)",
+              data : [
+                {% for item in values %}
+                   "{{ item }}",
+                  {% endfor %}
+                ]
+                }
             ]
-            }
-        ]
-      }
+          }
 
-     // get bar chart canvas
-     var mychart = document.getElementById("chart").getContext("2d");
+         // get bar chart canvas
+         var mychart = document.getElementById("chart").getContext("2d");
 
-       steps = 10
-       max = {{max}}
+           steps = 10
+           max = {{max}}
 
-     // draw bar chart
-     new Chart(mychart).Bar(barData, {
-       scaleOverride: true,
-       scaleSteps: steps,
-       scaleStepWidth: Math.ceil(max / steps),
-       scaleStartValue: 0,
-       scaleShowVerticalLines: true,
-       scaleShowGridLines : true,
-       barShowStroke : true,
-       scaleShowLabels: true
-       }
-     );
+         // draw bar chart
+         new Chart(mychart).Bar(barData, {
+           scaleOverride: true,
+           scaleSteps: steps,
+           scaleStepWidth: Math.ceil(max / steps),
+           scaleStartValue: 0,
+           scaleShowVerticalLines: true,
+           scaleShowGridLines : true,
+           barShowStroke : true,
+           scaleShowLabels: true
+           }
+         );
 
-    </script> -->
-    <!-- <div width="800" height="00"> -->
-    <canvas id="myChart" width="900" height="575"></canvas>
-    <script>
-      var ctx = document.getElementById('myChart').getContext('2d');
-      var myChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-              labels: [
-                {% for item in labels %}
-                 "{{ item }}",
-                {% endfor %}
-      	],
-              datasets: [{
-                  // label: '# of Votes',
-                  data: [
-                  {% for item in values %}
+        </script> -->
+        <!-- <div width="800" height="00"> -->
+        <canvas id="myChart" width="900" height="575"></canvas>
+        <script>
+          var ctx = document.getElementById('myChart').getContext('2d');
+          var myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                  labels: [
+                    {% for item in labels %}
                      "{{ item }}",
                     {% endfor %}
-                    ],
-                  backgroundColor: [
-                      'rgba(0, 0, 255, 0.2)',
-                      'rgba(0, 255, 0, 0.2)',
-                      'rgba(0, 0, 255, 0.2)',
-                      'rgba(0, 255, 0, 0.2)',
-                      'rgba(0, 0, 255, 0.2)',
-                      'rgba(0, 255, 0, 0.2)',
-                      'rgba(0, 0, 255, 0.2)',
-                      'rgba(0, 255, 0, 0.2)',
+            ],
+                  datasets: [{
+                      // label: '# of Votes',
+                      data: [
+                      {% for item in values %}
+                         "{{ item }}",
+                        {% endfor %}
+                        ],
+                      backgroundColor: [
+                          'rgba(0, 0, 255, 0.2)',
+                          'rgba(0, 255, 0, 0.2)',
+                          'rgba(0, 0, 255, 0.2)',
+                          'rgba(0, 255, 0, 0.2)',
+                          'rgba(0, 0, 255, 0.2)',
+                          'rgba(0, 255, 0, 0.2)',
+                          'rgba(0, 0, 255, 0.2)',
+                          'rgba(0, 255, 0, 0.2)',
 
 
-                  ],
-                  borderColor: [
-                      'rgba(0, 0, 255, 0.1)',
-                      'rgba(0, 255, 0, 1)',
-                      'rgba(0, 0, 255, 0.1)',
-                      'rgba(0, 255, 0, 1)',
-                      'rgba(0, 0, 255, 0.1)',
-                      'rgba(0, 255, 0, 1)',
-                      'rgba(0, 0, 255, 0.1)',
-                      'rgba(0, 255, 0, 1)',
-                  ],
-                  borderWidth: 1
-              }]
-          },
-          options: {
-            legend: {
-    display: false,
-},
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero: true
-                      }
+                      ],
+                      borderColor: [
+                          'rgba(0, 0, 255, 0.1)',
+                          'rgba(0, 255, 0, 1)',
+                          'rgba(0, 0, 255, 0.1)',
+                          'rgba(0, 255, 0, 1)',
+                          'rgba(0, 0, 255, 0.1)',
+                          'rgba(0, 255, 0, 1)',
+                          'rgba(0, 0, 255, 0.1)',
+                          'rgba(0, 255, 0, 1)',
+                      ],
+                      borderWidth: 1
                   }]
               },
-              responsive: false,
-          },
-      });
-      </script>
-  </center>
-<!-- </div> -->
-<h1>
-  Tips to Decrease Your Spending!
-</h1>
-<ul><li>Sleep on it!</li>
-  <li>If you still want to make the purchase the next day, you can ensure you really want it.</li>
-  <li>Ask yourself, ‘Do I need this?”</li>
-  <li>Ask yourself how many hours of work it will take to pay this item off?</li>
-  <li>Think of your credit card as a debit card</li>
-  <li>Take up less expensive hobbies to reduce spending, like cooking</li>
-  <li>Think of your saving goals whenever you feel tempted</li>
-  <li>Remember that you can do this</li>
-</ul>
+              options: {
+                legend: {
+        display: false,
+      },
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  },
+                  responsive: false,
+              },
+          });
+          </script>
+      </center>
+      <!-- </div> -->
+      <h1>
+      Tips to Decrease Your Spending!
+      </h1>
+      <ul><li>Sleep on it!</li>
+      <li>If you still want to make the purchase the next day, you can ensure you really want it.</li>
+      <li>Ask yourself, ‘Do I need this?”</li>
+      <li>Ask yourself how many hours of work it will take to pay this item off?</li>
+      <li>Think of your credit card as a debit card</li>
+      <li>Take up less expensive hobbies to reduce spending, like cooking</li>
+      <li>Think of your saving goals whenever you feel tempted</li>
+      <li>Remember that you can do this</li>
+      </ul>
 
-</body>
+
+    </body>
+        
 </html>
-{% endblock %}
