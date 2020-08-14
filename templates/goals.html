@@ -7,8 +7,13 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>BudgetBuddy: Goals</title>
-</head>
 
+</head>
+<style>
+    input{
+        width: 30%;
+    }
+</style>
 <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 <!-- <div class="topnav">
     <a href="#welcome">Welcome</a>
@@ -18,22 +23,22 @@
 <body>
   <center>
    <h2><br> These are the categories that are most variable throughout groups, and can be used to cut down on expenses:</h2>
-   <form action="/set_goals">
+   <form action="/set_goals" method="POST">
               <br><b> Budget</b>
               <br><small><i> What is your monthly budget in dollars?</i> </small>
-              <br><input type = "text" id = "t1">
+              <br><input type = "number" name = "t1" min = "0" >
               <br><b> Dining Out </b>
               <br><small><i> What percentage of your money do you want to spend at Restaurants and Cafes?</i> </small>
-              <br><input type = "text" id = "t1">
+              <br><input type = "number" name = "t2" min = "0" max ="100">
               <br><b> Groceries</b>
               <br><small><i> What percentage of your money do you want to spend shopping for groceries?</i> </small>
-              <br><input type = "text" id = "t2">
+              <br><input type = "number" name = "t3" min = "0" max ="100">
               <br><b> Entertainment</b>
               <br><small><i> What percentage of your money do you want to spend on things like subscription services and other activities used for entertainment, such as going to the movies?</i> </small>
-              <br><input type = "text" id = "t3">
+              <br><input type = "number" name = "t4" min = "0" max ="100">
               <br><b> Personal/Misc</b>
               <br><small><i> What percentage of your money do you want to spend on buying other things, such as clothing and supplies?</i> </small>
-              <br><input type = "text" id = "t4">
+              <br><input type = "number" name = "t5" min = "0" max ="100">
               <br>
               <br>
               <input class=submit type="submit" value="Submit">

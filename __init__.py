@@ -8,7 +8,6 @@ import json
 app = Flask(__name__)
 app.secret_key = 'coses'
 
-api_key = 'dceced5acb16100198959ed0cfa3d62b'
 
 labels = [
     'Take Out', 'Take Out (expected)',
@@ -17,27 +16,44 @@ labels = [
     'Misc', 'Misc (expected)'
 ]
 
-values = [
-    967.67, 1190.89, 1079.75, 1349.19,967.67, 1190.89, 1079.75, 1349.19
-]
-
-@app.route('/set_goals')
-def bar():
-    bar_labels=labels
-    bar_values=values
-    return render_template('graphs.html', title='Monthly Expenses', max=17000, labels=bar_labels, values=bar_values)
-
 @app.route('/')
 def main():
     return render_template('welcome.html')
 
-# @app.route('/login')
-# def login():
-#     return render_template('login.html')
-
 @app.route('/get_goals')
 def goals():
     return render_template('goals.html')
+
+@app.route('/set_goals', methods = ["POST"])
+def set_goals():
+    req = request.form
+    print(req)
+    # budg = req.get("t1")
+    print("==========")
+    print("HELLO")
+    type(req.get("t1"))
+    req.get("t1")
+    print("==========")
+    budg = int(req.get("t1"))
+    print("==========")
+    print("==========")
+    dining = int(req.get("t2"))
+    groceries = int(req.get("t3"))
+    ent = int(req.get("t4"))
+    misc = int(req.get("t5"))
+    SPENT = 400
+    values = []
+    values.append(SPENT)
+    values.append(int(budg * (dining/100)))
+    values.append(SPENT)
+    values.append(int(budg * (groceries/100)))
+    values.append(SPENT)
+    values.append(int(budg * (ent/100)))
+    values.append(SPENT)
+    values.append(int(budg * (misc/100)))
+    bar_labels=labels
+    maxy = max(values)
+    return render_template('graphs.html',title='Monthly Expenses', max=maxy, labels=bar_labels, values=values )
 
 if __name__ == '__main__':
     app.debug = True
