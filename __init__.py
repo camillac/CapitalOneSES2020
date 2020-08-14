@@ -41,6 +41,12 @@ def set_goals():
     groceries = int(req.get("t3"))
     ent = int(req.get("t4"))
     misc = int(req.get("t5"))
+    if(dining+groceries+ent+misc>100):
+        flash('Your percentages added up to more than 100%! Please try again')
+        return render_template('goals.html')
+    if(dining+groceries+ent+misc<100):
+        flash('Your percentages added up to less than 100%! Please try again')
+        return render_template('goals.html')
     SPENT = 0
     values = []
     # goal_list = []

@@ -13,9 +13,17 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
 
-
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul style="list-style-type:none" class=flashes>
+    {% for message in messages %}
+    <center><li style="background-color: rgba(255, 77, 77, .2); width:40%; text-align:center; margin-bottom:.5px;">{{ message }}</li> </center>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 <head>
-
+    
     <title>BudgetBuddy: Goals</title>
 
 </head>
