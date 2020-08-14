@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html>
+
+
+<link rel="icon"
+      type="image/png"
+      href="../static/bellbag.png">
+
+  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
+
     <head>
       <link rel="icon"
             type="image/png"
@@ -64,33 +78,33 @@
     </style>
     <body>
       <center>
-        <h1 style="font-size: 50px; font-weight: 8000">MONTHLY EXPENSES</h1>
+        <h1 class="wow fadeIn" data-wow-duration="3.0s" style="font-size: 50px; font-weight: 8000">MONTHLY EXPENSES</h1>
       </center>
       <form class = 'card-columns' action="/update_spending" method="POST">
-          <div class="card-body text-center">
+          <div class="card-body text-center wow fadeIn" data-wow-duration="3.0s">
            <b> <p class="card-text">Update Your Purchases Here!</p> </b>
            <p>Select which category(s) you would like to add purchases to and
              add the dollar amount to see how your purchases compare to your goals!
            </p>
           </div>
           <center>
-        <div class="form-check">
+        <div class="form-check wow fadeInRight" data-wow-duration="2.8s">
           <input type="radio" id="takeout" name="takeout" value="takeout">
           <label for="takeout">Takeout</label><br>
         </div>
-        <div class="form-check">
+        <div class="form-check wow fadeInRight" data-wow-duration="2.7s">
         <input type="radio" id="groceries" name="groceries" value="groceries">
         <label for="groceries">Groceries</label><br>
       </div>
-        <div class="form-check">
+        <div class="form-check wow fadeInRight" data-wow-duration="2.6s">
         <input type="radio" id="ent" name="ent" value="ent">
         <label for="ent">Entertainment</label> <br>
         </div>
-        <div class="form-check">
+        <div class="form-check wow fadeInRight" data-wow-duration="2.5s">
         <input type="radio" id="misc" name="misc" value="misc">
         <label for="misc">Misc</label><br>
         </div>
-        <input type="number" name = "amount" required>
+        <input class="wow fadeInRight" data-wow-duration="3.0s" type="number" name = "amount" required>
           <br>
         <input type="hidden" name= "old_dining" value="{{dining}}">
         <input type="hidden" name= "old_groceries" value="{{groceries}}">
@@ -102,7 +116,7 @@
         <input type="hidden" name= "goal_ent" value="{{goal_ent}}">
         <input type="hidden" name= "goal_misc" value="{{goal_misc}}">
         <br>
-          <input class=submit type="submit" value="Submit">
+          <input class="submit wow fadeInRight" data-wow-duration="3.0s" type="submit" value="Submit">
           </center>
 </form>
         <canvas id="myChart" width="800" height="575" style="padding:15px;margin:0px;"></canvas>
@@ -196,5 +210,27 @@
     <!-- </center> -->
 
     </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+            <script>
+              new WOW().init();
+              </script>
+    <script>
+
+        $(window).on("scroll", function() {
+            if ($(this).scrollTop() > 10) {
+                $("nav.navbar").addClass("mybg-dark");
+                $("nav.navbar").addClass("navbar-shrink");
+
+            } else {
+                $("nav.navbar").removeClass("mybg-dark");
+                $("nav.navbar").removeClass("navbar-shrink");
+
+            }
+
+        });
+
+
+    </script>
 
 </html>

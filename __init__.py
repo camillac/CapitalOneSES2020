@@ -43,7 +43,7 @@ def set_goals():
     misc = int(req.get("t5"))
     SPENT = 0
     values = []
-    # goal_list = [] 
+    # goal_list = []
     values.append(SPENT)
     values.append(int(budg * (dining/100)))
     goal_dining= (int(budg * (dining/100)))
@@ -101,7 +101,7 @@ def update_spending():
     if(g> g_goal):
         flash("You exceeded your groceries goal! Somebody's been mighty hungry!")
     if(e> e_goal):
-        flash('You exceeded your entertainmnet goal! Stop watching TV and do some work!')
+        flash('You exceeded your entertainment goal! Stop watching TV and do some work!')
     if(m> m_goal):
         flash('You exceeded your misc goal! What are you spending your money on?')
     return render_template('graphs.html',title='Monthly Expenses', max=maxy, labels=bar_labels, values=values, budg = budg, dining = d, groceries = g,ent = e, misc = m,goal_dining = d_goal, goal_groc = g_goal, goal_ent = e_goal, goal_misc = m_goal )
